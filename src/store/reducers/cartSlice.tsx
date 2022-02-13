@@ -13,18 +13,18 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const existingIndex = state.products.findIndex(
-        (item) => item.product?.id === action.payload?.id
+        (item) => item.product?.id === action.payload?.product.id
       );
 
       if (existingIndex !== -1) {
-        state.products[existingIndex].quantity++;
-        state.total += action.payload.price;
+        state.products[existingIndex].quantity += action.payload?.quantity;
+        state.total += action.payload?.product.attributes.price;
       } else {
         state.products.push({
-          product: action.payload,
-          quantity: 1,
+          product: action.payload.product,
+          quantity: action.payload?.quantity,
         });
-        state.total += action.payload.price;
+        state.total += action.payload?.product.attributes.price;
       }
     },
     removeFromCart(state, action) {
@@ -47,12 +47,17 @@ export const cartSlice = createSlice({
       );
 
       if (existingIndex !== -1) {
-        state.total -= state.products[existingIndex].product.price;
-        state.products[existingIndex].quantity = action.payload.quantity;
-        let totalPrice = state.products.reduce(function (accumulator, item) {
-          return accumulator + item.product.price * item.quantity;
-        }, 0);
-        state.total = totalPrice;
+        if (state.products[existingIndex].product) {
+          state.total -=
+            state.products[existingIndex]?.product?.attributes?.price!;
+          state.products[existingIndex].quantity = action.payload.quantity;
+          let totalPrice = state.products.reduce(function (accumulator, item) {
+            return (
+              accumulator + item?.product?.attributes?.price! * item.quantity
+            );
+          }, 0);
+          state.total = totalPrice;
+        }
       }
     },
   },

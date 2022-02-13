@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import { ProductModel } from "../models/ProductModel";
 import client from "../api/config";
 
@@ -28,7 +28,7 @@ export const productsSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = "succeeded";
         // Add any fetched products to the array
-        state.products = state.products.concat(action.payload.data);
+        state.products = [...action.payload.data];
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "failed";

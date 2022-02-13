@@ -1,7 +1,14 @@
 export interface ProductModel {
-  id: string;
-  image: string;
-  name: string;
-  price: number;
-  category?: string;
+  attributes?: {
+    name?: string;
+    price?: number;
+    description?: string;
+    image_app_url?: string;
+    slugs?: {
+      department?: string;
+    };
+    relationships?: any;
+  };
+  type?: string;
+  id?: string | number;
 }
