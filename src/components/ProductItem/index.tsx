@@ -1,8 +1,5 @@
 import { ProductItemComp } from "./ProductItemStyled";
-import { useDispatch, useSelector } from "react-redux";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
-import { Header } from "components";
-import { RootState } from "store";
 import { ProductModel } from "store/models/ProductModel";
 import { useState } from "react";
 

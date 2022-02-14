@@ -41,6 +41,8 @@ export const HeaderComp = styled.div`
     color: ${colors.secondary};
     font-size: 30px;
     font-weight: extra-bold;
+  }
+  & > .icon > svg.cart {
     cursor: pointer;
   }
   @media (min-width: 640px) {
