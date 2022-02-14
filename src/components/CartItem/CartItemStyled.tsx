@@ -21,6 +21,7 @@ export const CartItemComp = styled.div`
     justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid ${colors.primary};
+    font-size: 12px;
     & > span {
       margin-right: 10px;
       background-color: ${colors.primary};
@@ -38,5 +39,11 @@ export const CartItemComp = styled.div`
     color: ${colors.blue};
     cursor: pointer;
     font-size: 25px;
+  }
+
+  @media (min-width: 768px) {
+    & > .content {
+      font-size: 18px;
+    }
   }
 `;

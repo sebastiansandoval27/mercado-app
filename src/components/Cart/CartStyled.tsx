@@ -49,8 +49,8 @@ export const CartStyledContent = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     overflow-y: auto;
   }
 
